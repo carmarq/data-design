@@ -69,33 +69,28 @@
 		</ul>
 		<br>
 	<h2>Entities and Attributes</h2>
-	<h3>User (strong)</h3>
+	<h3>Profile (strong)</h3>
 		<ul>
-			<li>userId</li>
-			<li>userHistory</li>
-			<li>userLocation</li>
-		</ul>
-	<h3>Scroll (strong)</h3>
-		<ul>
-			<li>scrollId</li>
-			<li>scrollUp</li>
-			<li>scrollDown</li>
+			<li>profileId</li>
+			<li>profileHistory</li>
+			<li>profileLocation</li>
 		</ul>
 		<h3>Product (strong)</h3>
 		<ul>
 			<li>productId</li>
-			<li>productGeneralInformation</li>
-			<li>productDetailedInformation</li>
+			<li>productName</li>
+			<li>productVariety</li>
+			<li>productPrice</li>
 		</ul>
-	<h3>Examine (weak)</h3>
+		<h3>Select (weak)</h3>
 		<ul>
-			<li>examineId</li>
-			<li>examineProduct</li>
+			<li>selectProfileId</li>
+			<li>selectProductId</li>
 		</ul>
-		<br>
 	<h3>Relations</h3>
 		<ul>
-			<li>One <strong>User</strong> can </li>
+			<li>One <strong>User</strong> can select many <strong>Products</strong> (1-to-n). </li>
+			<li>Many <strong>Products</strong> can be <strong>Selected</strong> many times (m-to-n). </li>
 		</ul>
 	</body>
 </html>
