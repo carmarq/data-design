@@ -49,9 +49,12 @@
 		<ul>
 		<li>User Story: As a user Vince wants to browse for indica products.</li>
 		<li>Persona: Vince</li>
-		<li>Scenario: Vince has tired of using other conventional methods to ingest thc; herefore he's on the hunt for something tasty.</li>
+		<li>Scenario: Vince has tired of using other conventional methods to ingest thc; therefore he's on the hunt for something tasty.</li>
 		<li>Precondition: Vince is on the edibles page.</li>
 		<li>Postcondtion: Vince browses and makes a selection.</li>
+		</ul>
+		<br>
+		<ul>
 		<li>1. Vince scrolls through the edibles page to find something that he would like.</li>
 		<li>2. The page loads images of products, and general information about the product.</li>
 		<li>3. Vince selects an item to examine.</li>
@@ -60,7 +63,20 @@
 		<br>
 	<h1>Conceptual Model</h1>
 		<ul>
-		<li></li>
+		<li>One user can select one product many times (1-to-1).</li>
+		</ul>
+			<br>
+	<h2>Entities and Attributes</h2>
+	<h3>User-</h3>
+		<ul>
+		<li>userId</li>
+		<li>userHistory</li>
+		</ul>
+		<h3>Product-</h3>
+		<ul>
+		<li>productId</li>
+		<li>productGeneralInformation</li>
+		<li>productDetailedInformation</li>
 		</ul>
 	</body>
 </html>
