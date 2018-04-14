@@ -41,21 +41,21 @@
 	<h1>User Story</h1>
 		<ul>
 		<li>1: As a user Vince wants to see what ingredients go into edibles.</li>
-		<li>2: As a user Vince wants to compare products</li>
+		<li>2: As a user Vince wants to browse for indica products</li>
 		<li>3: As a user Vince wants to make reservations for products to be held at the store.</li>
 		<li>4: As a user Vince wants to make comments on products</li>
 		</ul>
 		<h1>Use Case/ Interaction Flow</h1>
 		<ul>
-		<li>User Story: As a user Vince wants to compare products.</li>
+		<li>User Story: As a user Vince wants to browse for indica products.</li>
 		<li>Persona: Vince</li>
 		<li>Scenario: Vince has tired of using other conventional methods to ingest thc; herefore he's on the hunt for something tasty.</li>
 		<li>Precondition: Vince is on the edibles page.</li>
-		<li>Postcondtion: Vince compares the two suckers with each other.</li>
+		<li>Postcondtion: Vince browses and makes a selection.</li>
 		<li>1. Vince scrolls through the edibles page to find something that he would like.</li>
 		<li>2. The page loads images of products, and general information about the product.</li>
-		<li>3. Vince selects two items to compare.</li>
-		<li>4. The site loads information about the products, and they can be displayed side-by-side. </li>
+		<li>3. Vince selects an item to examine.</li>
+		<li>4. The site loads information about the product.</li>
 		</ul>
 		<br>
 	<h1>Conceptual Model</h1>
