@@ -54,29 +54,34 @@
 		<li>Postcondtion: Vince browses and makes a selection.</li>
 		</ul>
 		<br>
-		<ul>
-		<li>1. Vince scrolls through the edibles page to find something that he would like.</li>
-		<li>2. The page loads images of products, and general information about the product.</li>
-		<li>3. Vince selects an item to examine.</li>
-		<li>4. The site loads information about the product.</li>
-		</ul>
+		<ol>
+		<li>Vince scrolls through the edibles page to find something that he would like.</li>
+		<li>The site loads images of products, and general information about the product.</li>
+		<li>Vince selects an item to examine.</li>
+		<li>The site loads information about the product.</li>
+		</ol>
 		<br>
 	<h1>Conceptual Model</h1>
 		<ul>
-		<li>One user can select one product many times (1-to-1).</li>
+		<li>One user can select one product many times (1-to-n).</li>
 		</ul>
 			<br>
 	<h2>Entities and Attributes</h2>
-	<h3>User-</h3>
+	<h3>User (strong)</h3>
 		<ul>
 		<li>userId</li>
 		<li>userHistory</li>
 		</ul>
-		<h3>Product-</h3>
+		<h3>Product (strong)</h3>
 		<ul>
 		<li>productId</li>
 		<li>productGeneralInformation</li>
 		<li>productDetailedInformation</li>
+		</ul>
+	<h3>Choose (weak)</h3>
+		<ul>
+			<li>chooseId</li>
+			<li>chooseProductId</li>
 		</ul>
 	</body>
 </html>
