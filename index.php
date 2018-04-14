@@ -39,7 +39,14 @@
 		<br>
 		<br>
 	<h1>User Story</h1>
-	<h1>Use Case/Interaction Flow</h1>
+		<ul>
+		<li>1: Vince wants to see what ingredients go into edibles.</li>
+		<li>2: Vince wants to compare products</li>
+		<li>3: Vince wants to make reservations for products to be held at the store.</li>
+		<li>4: Vince wants to make comments on products</li>
+		<li></li>
+		</ul>
+		<h1>Use Case/Interaction Flow</h1>
 	<h1>Conceptual Model</h1>
 	</body>
 </html>
