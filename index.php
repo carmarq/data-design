@@ -57,7 +57,11 @@
 		<li>3. Vince selects two items to compare.</li>
 		<li>4. The site loads information about the products, and they can be displayed side-by-side. </li>
 		</ul>
+		<br>
 	<h1>Conceptual Model</h1>
+		<ul>
+		<li></li>
+		</ul>
 	</body>
 </html>
 
