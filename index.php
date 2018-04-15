@@ -71,12 +71,12 @@
 	<h2>Entities and Attributes</h2>
 	<h3>Profile (strong)</h3>
 		<ul>
-			<li>profileId</li>
+			<li>profileId (primary key)</li>
 			<li>profileLocation</li>
 		</ul>
 		<h3>Product (strong)</h3>
 		<ul>
-			<li>productId</li>
+			<li>productId (primary key)</li>
 			<li>productName</li>
 			<li>productVariety</li>
 			<li>productHistory</li>
@@ -84,8 +84,8 @@
 		</ul>
 		<h3>Select (weak)</h3>
 		<ul>
-			<li>selectProfileId</li>
-			<li>selectProductId</li>
+			<li>selectProfileId (foreign key)</li>
+			<li>selectProductId (foreign key)</li>
 		</ul>
 	<h3>Relations</h3>
 		<ul>
