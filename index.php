@@ -51,7 +51,7 @@
 			<li>User Story: As a user Vince wants to browse for indica products.</li>
 			<li>Persona: Vince</li>
 			<li>Scenario: Vince has tired of using other conventional methods to ingest thc; therefore he's on the hunt for something tasty.</li>
-			<li>Precondition: Vince is on the edibles page.</li>
+			<li>Precondition: Vince is on the edibles page. Also, Vince doesn't have a profile but that's okay.</li>
 			<li>Postcondtion: Vince browses and makes a selection.</li>
 		</ul>
 		<br>
@@ -65,7 +65,7 @@
 		<br>
 	<h1>Conceptual Model</h1>
 		<ul>
-			<li>The user can choose one product many times (1-to-n).</li>
+			<li>Many users can choose one product many times (m-to-n).</li>
 		</ul>
 		<br>
 	<h2>Entities and Attributes</h2>
@@ -73,14 +73,19 @@
 		<ul>
 			<li>profileId (primary key)</li>
 			<li>profileLocation</li>
+			<li>profileEmail</li>
+			<li>profileFavorites</li>
+			<li>profileUsername</li>
 		</ul>
 		<h3>Product (strong)</h3>
 		<ul>
 			<li>productId (primary key)</li>
 			<li>productName</li>
 			<li>productVariety</li>
+			<li>productFacts</li>
 			<li>productHistory</li>
 			<li>productPrice</li>
+			<li>productVariations</li>
 		</ul>
 		<h3>Select (weak)</h3>
 		<ul>
