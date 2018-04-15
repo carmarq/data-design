@@ -72,7 +72,6 @@
 	<h3>Profile (strong)</h3>
 		<ul>
 			<li>profileId</li>
-			<li>profileHistory</li>
 			<li>profileLocation</li>
 		</ul>
 		<h3>Product (strong)</h3>
@@ -80,6 +79,7 @@
 			<li>productId</li>
 			<li>productName</li>
 			<li>productVariety</li>
+			<li>productHistory</li>
 			<li>productPrice</li>
 		</ul>
 		<h3>Select (weak)</h3>
