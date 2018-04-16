@@ -21,15 +21,15 @@ CREATE TABLE product(
 			productPrice VARCHAR(128) NOT NULL,
 			productVariations VARCHAR(128) NOT NULL,
 			INDEX(pickProductId),
-			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId)
 			PRIMARY KEY(productID)
+			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId)
 );
 CREATE TABLE 'pick'(
 			pickProductId BINARY(16)
 			pickProfileId BINARY(16)
 			INDEX(pickProfileId),
 			INDEX(pickProductId),
+			PRIMARY KEY(pickProfileId, pickProductId)
 			FOREIGN KEY(pickProductId) References product(productId),
 			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId),
-			PRIMARY KEY(pickProfileId, pickProductId)
 );
