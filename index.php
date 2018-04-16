@@ -7,36 +7,35 @@
 	<body>
 	<h1>Persona		</h1>
 			<ul>
-				<li>Vince</li>
+				<li>Vince S. Hernandez</li>
 				<li>33 years old</li>
-				<li>Male</li>
 			</ul>
-		<br>
 	<h2>Technology Used</h2>
-			<ul>
-				<li>Laptop: 2011 MacBook Pro (OS 10.12 Sierra) </li>
-				<li>Phone: LGV30 (Android 7.1.2)</li>
-			</ul>
+			<P>
+				Uses a 2011 MacBook Pro (OS 10.12 Sierra).
+				He also uses an LGV30 (Android 7.1.2) on T-Mobile's 4G network.
+			</p>
 		<br>
 	<h2>Attitudes</h2>
-			<ul>
-				<li>Is excited to use web applications.</li>
-				<li>Feels confident about using web applications.</li>
-				<li>Generally pretty content.</li>
-			</ul>
+			<p>
+				Vince is generally pretty content and comfortable with navigating commercial websites.
+				He has some extra time, but dedicates most of it to his kids and wife. He'll usually spend
+				4-5 minutes on a website that he's not used to, and less than that, maybe 2-3 on websites
+				that he is used to.
+			</p>
 		<br>
 	<h2>Goals</h2>
-			<ul>
-				<li>Vince is looking for the better quality (highest thc/cbd content) products.</li>
-				<li>He also hopes to find what he's looking for quickly.</li>
-			</ul>
+		<p>
+			Vince is looking top quality THC and CBD products. Specifically, he is looking for indica products
+			at higher than 25 mg of thc, and CBD products at about the same ratio. He's especially happy when the two
+			are combined.
+		</p>
 		<br>
 	<h2>Frustrations</h2>
-			<ul>
-				<li>Better available products, and a wider selection at good prices.</li>
-				<li>What has precluded him from reaching his goal before was not being able to see current stock in the first place.</li>
-			</ul>
-		<br>
+		<p>Vince is looking for the best quality of medicine. He's versed in higher than intermediate topics
+		in the cannabis community and knows when quality is sub par. He's usually pretty happy when he can access
+		what he needs in a quick and easy method (not having to go through many pages to find what he wants).
+		He wants to make sure that when he arrives at the store, that they carry what he wants.</p>
 		<br>
 	<h1>User Story</h1>
 		<ul>
@@ -45,8 +44,8 @@
 			<li>3: As a user Vince wants to make reservations for products to be held at the store.</li>
 			<li>4: As a user Vince wants to make comments on products</li>
 		</ul>
-		<h1>Use Case/ Interaction Flow</h1>
-		<h3>Use Case</h3>
+	<h1>Use Case/ Interaction Flow</h1>
+	<h3>Use Case</h3>
 		<ul>
 			<li>User Story: As a user Vince wants to browse for indica products.</li>
 			<li>Persona: Vince</li>
