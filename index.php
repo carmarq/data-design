@@ -15,27 +15,25 @@
 				Uses a 2011 MacBook Pro (OS 10.12 Sierra).
 				He also uses an LGV30 (Android 7.1.2) on T-Mobile's 4G network.
 			</p>
-		<br>
 	<h2>Attitudes</h2>
 			<p>
-				Vince is generally pretty content and comfortable with navigating commercial websites.
+				Vince is generally pretty comfortable with navigating commercial websites.
 				He has some extra time, but dedicates most of it to his kids and wife. He'll usually spend
 				4-5 minutes on a website that he's not used to, and less than that, maybe 2-3 on websites
 				that he is used to.
 			</p>
-		<br>
 	<h2>Goals</h2>
 		<p>
-			Vince is looking top quality THC and CBD products. Specifically, he is looking for indica products
+			Vince, diagosed with PTSD, enjoys products that relax and ease his mind. He is looking for top quality THC and CBD products. Specifically, he is looking for indica products
 			at higher than 25 mg of THC, and CBD products at about the same ratio. He's especially happy when the two
 			are combined. He wants to find something for himself within a few minutes.
 		</p>
-		<br>
 	<h2>Frustrations</h2>
 		<p>Vince is looking for the best quality of medicine. He's versed in higher than intermediate topics
-		in the cannabis community and knows when quality is sub par. He's usually pretty happy when he can access
-		what he needs in a quick and easy method (not having to go through many pages to find what he wants).
-		He wants to make sure that when he arrives at the store, that they carry what he wants.</p>
+			in the cannabis community, knows when quality is sub par, and will let you know when something's wrong.
+			He's usually pretty happy when he can access what he needs in a quick and easy method (not having to go
+			through many pages to find what he wants). He wants to make sure that when he arrives at the store, that
+			they carry what he wants.</p>
 		<br>
 	<h1>User Story</h1>
 		<ul>
@@ -53,7 +51,6 @@
 			<li>Precondition: Vince is on the edibles page. Also, Vince doesn't have a profile but that's okay.</li>
 			<li>Postcondtion: Vince browses and makes a selection.</li>
 		</ul>
-		<br>
 	<h3>Interaction Flow</h3>
 		<ul>
 			<li>Vince scrolls through the edibles page to find something that he would like.</li>
@@ -61,12 +58,10 @@
 			<li>Vince selects an item to examine.</li>
 			<li>The site loads information about the product.</li>
 		</ul>
-		<br>
 	<h1>Conceptual Model</h1>
 		<ul>
 			<li>Many users can choose one product many times (m-to-n).</li>
 		</ul>
-		<br>
 	<h2>Entities and Attributes</h2>
 	<h3>Profile (strong)</h3>
 		<ul>
