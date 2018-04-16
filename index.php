@@ -42,6 +42,7 @@
 			<li>3: As a user Vince wants to make reservations for products to be held at the store.</li>
 			<li>4: As a user Vince wants to make comments on products</li>
 		</ul>
+		<br>
 	<h1>Use Case/ Interaction Flow</h1>
 	<h3>Use Case</h3>
 		<ul>
@@ -58,6 +59,7 @@
 			<li>Vince selects an item to examine.</li>
 			<li>The site loads information about the product.</li>
 		</ul>
+		<br>
 	<h1>Conceptual Model</h1>
 		<ul>
 			<li>Many users can choose one product many times (m-to-n).</li>
