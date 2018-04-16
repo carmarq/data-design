@@ -1,5 +1,5 @@
 ALTER DATABASE cmarquez69 CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-DROP TABLE IF EXISTS 'select';
+DROP TABLE IF EXISTS 'pick';
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS profile;
 CREATE TABLE profile(
@@ -8,6 +8,9 @@ CREATE TABLE profile(
 			profileEmail VARCHAR(128)
 			profileFavorites VARCHAR(128)
 			profileUsername VARCHAR(16)
+			UNIQUE(profileUsername),
+			UNIQUE(profileEmail),
+			PRIMARY KEY(profileId)
 );
 CREATE TABLE product(
 			productId BINARY(16) NOT NULL,
@@ -17,6 +20,9 @@ CREATE TABLE product(
 			productHistory VARCHAR(128) NOT NULL,
 			productPrice VARCHAR(128) NOT NULL,
 			productVariations VARCHAR(128) NOT NULL,
+			INDEX(pickProductId),
+			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId)
+			PRIMARY KEY(productID)
 );
 CREATE TABLE 'pick'(
 			pickProfileId BINARY(16)
@@ -25,4 +31,5 @@ CREATE TABLE 'pick'(
 			INDEX(pickProductId),
 			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId),
 			FOREIGN KEY(pickProductId) References product(productId),
+			PRIMARY KEY(pickProfileId, pickProductId)
 );
