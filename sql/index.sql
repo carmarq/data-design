@@ -15,6 +15,7 @@ CREATE TABLE profile(
 CREATE TABLE product(
 			productId BINARY(16) NOT NULL,
 			productName VARCHAR(128) NOT NULL,
+			productHash VARCHAR (128) NOT NULL,
 			productVariety VARCHAR(128) NOT NULL,
 			productFacts VARCHAR(128)  NOT NULL,
 			productHistory VARCHAR(128) NOT NULL,

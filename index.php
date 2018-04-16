@@ -77,6 +77,7 @@
 		<ul>
 			<li>productId (primary key)</li>
 			<li>productName</li>
+			<li>productHash</li>
 			<li>productVariety</li>
 			<li>productFacts</li>
 			<li>productHistory</li>
