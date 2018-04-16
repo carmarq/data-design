@@ -8,8 +8,8 @@ CREATE TABLE profile(
 			profileEmail VARCHAR(128)
 			profileFavorites VARCHAR(128)
 			profileUsername VARCHAR(16)
-			UNIQUE(profileUsername),
 			UNIQUE(profileEmail),
+			UNIQUE(profileUsername),
 			PRIMARY KEY(profileId)
 );
 CREATE TABLE product(
@@ -25,11 +25,11 @@ CREATE TABLE product(
 			PRIMARY KEY(productID)
 );
 CREATE TABLE 'pick'(
-			pickProfileId BINARY(16)
 			pickProductId BINARY(16)
+			pickProfileId BINARY(16)
 			INDEX(pickProfileId),
 			INDEX(pickProductId),
-			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId),
 			FOREIGN KEY(pickProductId) References product(productId),
+			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId),
 			PRIMARY KEY(pickProfileId, pickProductId)
 );
