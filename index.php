@@ -27,7 +27,7 @@
 	<h2>Goals</h2>
 		<p>
 			Vince is looking top quality THC and CBD products. Specifically, he is looking for indica products
-			at higher than 25 mg of thc, and CBD products at about the same ratio. He's especially happy when the two
+			at higher than 25 mg of THC, and CBD products at about the same ratio. He's especially happy when the two
 			are combined.
 		</p>
 		<br>
