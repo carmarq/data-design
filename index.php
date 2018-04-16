@@ -28,7 +28,7 @@
 		<p>
 			Vince is looking top quality THC and CBD products. Specifically, he is looking for indica products
 			at higher than 25 mg of THC, and CBD products at about the same ratio. He's especially happy when the two
-			are combined.
+			are combined. He wants to find something for himself within a few minutes.
 		</p>
 		<br>
 	<h2>Frustrations</h2>
