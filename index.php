@@ -87,10 +87,10 @@
 			<li>productPrice</li>
 			<li>productVariations</li>
 		</ul>
-		<h3>Select (weak)</h3>
+		<h3>Pick (weak)</h3>
 		<ul>
-			<li>selectProfileId (foreign key)</li>
-			<li>selectProductId (foreign key)</li>
+			<li>pickProfileId (foreign key)</li>
+			<li>pickProductId (foreign key)</li>
 		</ul>
 	<h3>Relations</h3>
 		<ul>
