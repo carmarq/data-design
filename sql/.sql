@@ -1,4 +1,4 @@
-ALTER DATABASE your_database_name_CHANGE_ME CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER DATABASE cmarquez69 CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 DROP TABLE IF EXISTS 'select';
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS profile;
