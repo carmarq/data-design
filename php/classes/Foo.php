@@ -21,6 +21,11 @@ private $profileEmail;
 	 **/
 private $profileLocation;
 	/**
+	 * id for protecting users password
+	 * @var
+	 */
+private $profileHash;
+	/**
 	 *id for the username associated with the profile
 	 *@var $profileUsername
 	 **/
@@ -28,9 +33,15 @@ private $profileUsername;
 	/**
 	 * constructor for this profile
 	 * @param string|Uuid $newProfileId id of this profile or null if a new profile
-	 * @param string|Uuid $newProfileEmail email of the
+	 * @param string|Uuid $newProfileEmail email for profile or
 	 **/
-
+public function__construct($newProfileId, $newProfileEmail, $newProfileFavorites, $newProfileLocation, $newProfileUsername = null) {
+		try {
+						$this->setProfileId($newProfileId);
+						$this->setProfileFavorites($newProfileFavorites);
+						$this->setProfile
+}
+}
 	/**
 	 * accessor method for profileId
 	 *
@@ -66,7 +77,19 @@ private $profileUsername;
 	public function setProfileEmail($profileEmail) : void {
 		$this->profileEmail = $profileEmail;
 	}
+/**
+ * @return mixed
+ */
+	public function getProfileHash() {
+		return $this->profileHash;
+}
 
+/**
+ * @param mixed $profileHash
+ */
+	public function setProfileHash($profileHash) {
+		$this->profileHash = $profileHash;
+}
 	/**
 	 * accessor method for profileLocation
 	 *
