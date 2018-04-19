@@ -39,7 +39,8 @@ public function__construct($newProfileId, $newProfileEmail, $newProfileFavorites
 		try {
 						$this->setProfileId($newProfileId);
 						$this->setProfileFavorites($newProfileFavorites);
-						$this->setProfile
+						$this->setProfileHash($newProfileHash);
+						$this->setProfileLocation($newProfileUsername);
 }
 }
 	/**
