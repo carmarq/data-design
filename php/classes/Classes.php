@@ -30,18 +30,7 @@ private $profileHash;
 	 *@var $profileUsername
 	 **/
 private $profileUsername;
-	/**
-	 * constructor for this profile
-	 * @param string|Uuid $newProfileId id of this profile or null if a new profile
-	 * @param string|Uuid $newProfileEmail email for profile or
-	 **/
-public function__construct($newProfileId, $newProfileEmail, $newProfileFavorites, $newProfileLocation, $newProfileUsername = null) {
-		try {
-						$this->setProfileId($newProfileId);
-						$this->setProfileFavorites($newProfileFavorites);
-						$this->setProfileHash($newProfileHash);
-						$this->setProfileLocation($newProfileUsername);
-}
+
 }
 	/**
 	 * accessor method for profileId
