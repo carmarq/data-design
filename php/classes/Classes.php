@@ -44,12 +44,18 @@ private $profileUsername;
 	/**
 	 * mutator method for profileId
 	 *
-	 * @param $profileId
+	 * @param $newprofileId
 	 */
-	public function setProfileId($profileId) : void {
-		$this->profileId = $profileId;
+	public function setProfileId($newprofileId) : void {
+		try {
+			$uuid = self::validateUuid($newprofileId);
+		}	catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 	}
-
+	// convert and store the profile id
+	$this->profileId = $uuid;
+	
 	/**
 	 * accessor method for profileEmail
 	 *
@@ -58,7 +64,6 @@ private $profileUsername;
 	public function getProfileEmail(): String {
 		return $this->profileEmail;
 	}
-
 	/**
 	 * mutator method for profileEmail
 	 *
@@ -68,16 +73,19 @@ private $profileUsername;
 		$this->profileEmail = $profileEmail;
 	}
 /**
- * @return mixed
+ * accessor method for  profilehash
+ *
+ * @return string value of profilehash
  */
 	public function getProfileHash() {
 		return $this->profileHash;
 }
-
 /**
- * @param mixed $profileHash
+ * Mutator method for profilehash
+ *
+ * @param $profileHash
  */
-	public function setProfileHash($profileHash) {
+	public function setProfileHash($profileHash) : void {
 		$this->profileHash = $profileHash;
 }
 	/**
