@@ -1,10 +1,16 @@
 <?php
 
+namespace Edu\Cnm\cmarquez69\DataDesign;
+
+require_once (dirname(_DIR_, 2). "/vendor/autoload.php");
+
+use Ramsey\Uuid\Uuid;
 /**
  * @author Carlos Marquez <carl.marq95@gmail.com>
  * @version 0.0.1
  **/
 class profile {
+	use ValidateUuid;
 	/**
  * id for this Profile; this is the primary key
  * @var $profileId
@@ -69,15 +75,23 @@ private $profileUsername;
 	 *
 	 * @param $profileEmail
 	 */
-	public function setProfileEmail($profileEmail) : void {
-		$this->profileEmail = $profileEmail;
+	public function setProfileEmail(string $newProfileEmail) : void {
+		$newProfileEmail = trim($newProfileEmail);
+		$newProfileEmail = filter_var($newProfileEmail, FILTER_VALIDATE_EMAIL);
+		if(empty($newProfileEmail) === true) {
+			throw(new \InvalidArgumentException("profile email is too large"));
+		}
+		if(strlen($newProfileEmail) > 128) {
+			throw(new \RangeException("profile email is too large")
+		}
+		$this->profileEmail = $newProfileEmail;
 	}
 /**
  * accessor method for  profilehash
  *
  * @return string value of profilehash
  */
-	public function getProfileHash() {
+	public function getProfileHash(): string {
 		return $this->profileHash;
 }
 /**
@@ -85,8 +99,19 @@ private $profileUsername;
  *
  * @param $profileHash
  */
-	public function setProfileHash($profileHash) : void {
-		$this->profileHash = $profileHash;
+	public function setProfileHash(string $newProfileHash) : void {
+		$newProfileHash = trim($newProfileHash);
+		$newProfileHash = strtolower($newProfileHash);
+		if(empty($newProfileHash) === true) {
+			throw(new \InvalidArgumentException("profile password hash empty or insecure"));
+		}
+		if(!ctype_xdigit($newProfileHash)) {
+			throw(new \InvalidArgumentException("profile password hash empty or insecure"));
+		}
+		if strlen($newProfileHash) !== 128) {
+				throw(new \RangeException("profile hash must be 128 characters"));
+		}
+		$this->profileHash = $newProfileHash;
 }
 	/**
 	 * accessor method for profileLocation
@@ -102,10 +127,17 @@ private $profileUsername;
 	 *
 	 * @param $profileLocation
 	 */
-	public function setProfileLocation($profileLocation) : void {
-		$this->profileLocation = $profileLocation;
+	public function setProfileLocation(string $newProfileLocation) : void {
+		$newProfileLocation = trim($newProfileLocation);
+		$newProfileLocation = filter_var($newProfileLocation, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newProfileLocation) === true) {
+			throw(new \InvalidArgumentException("profile location is empty or insecure"))
+		}
+		if(strlen ($newProfileLocation) > 128 ){
+			throw(new \RangeException("profile location is too large"));
+		}
+		$this->profileLocation = $newProfileLocation;
 	}
-
 	/**
 	 * accessor method of profileUsername
 	 *
@@ -119,8 +151,7 @@ private $profileUsername;
 	 *
 	 * @param $profileUsername
 	 */
-	public function setProfileUsername($profileUsername) : void {
-		$this->profileUsername = $profileUsername;
-	}
+	public function setProfileUsername(string $newProfileUsername) : void {
+}
 
 }
