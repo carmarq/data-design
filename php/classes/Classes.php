@@ -131,7 +131,7 @@ private $profileUsername;
 		$newProfileLocation = trim($newProfileLocation);
 		$newProfileLocation = filter_var($newProfileLocation, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(empty($newProfileLocation) === true) {
-			throw(new \InvalidArgumentException("profile location is empty or insecure"))
+			throw(new \InvalidArgumentException("profile location is empty or insecure"));
 		}
 		if(strlen ($newProfileLocation) > 128 ){
 			throw(new \RangeException("profile location is too large"));
