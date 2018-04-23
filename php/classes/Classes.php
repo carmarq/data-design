@@ -9,8 +9,9 @@ use Ramsey\Uuid\Uuid;
  * @author Carlos Marquez <carl.marq95@gmail.com>
  * @version 0.0.1
  **/
-class profile {
+class profile implements \JsonSerializable {
 	use ValidateUuid;
+	use ValidateDate;
 	/**
  * id for this Profile; this is the primary key
  * @var $profileId
@@ -52,7 +53,7 @@ private $profileUsername;
 	 *
 	 * @param $newprofileId
 	 */
-	public function setProfileId($newprofileId) : void {
+	public function setProfileId($newprofileId) : Uuid {
 		try {
 			$uuid = self::validateUuid($newprofileId);
 		}	catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
@@ -154,4 +155,9 @@ private $profileUsername;
 	public function setProfileUsername(string $newProfileUsername) : void {
 }
 
+}
+public function jsonSerialize() array {
+		$fields = get_object_vars($this);
+
+		$fields{}
 }
