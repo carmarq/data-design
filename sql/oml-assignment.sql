@@ -20,3 +20,11 @@ UPDATE profile
 SET profileLocation = 'Roswell, NM'
 Where profileUsername = 'sucsmd'
 
+<?php
+
+public function insert (\PDO $pdo) : void {
+		$query = "INSERT INTO profile(profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername) VALUES(:profileId, :profileEmail, :profileFavorites, :profileHash, :profileLocation, :profileUsername)";
+$statement = $pdo->prepare($query);
+
+$formattedDate = $this->
+}
