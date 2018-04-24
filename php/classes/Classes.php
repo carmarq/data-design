@@ -2,6 +2,7 @@
 
 namespace Edu\Cnm\cmarquez69\DataDesign;
 
+require_once ("autoload.php");
 require_once (dirname(_DIR_, 2). "/vendor/autoload.php");
 
 use Ramsey\Uuid\Uuid;
@@ -9,9 +10,9 @@ use Ramsey\Uuid\Uuid;
  * @author Carlos Marquez <carl.marq95@gmail.com>
  * @version 0.0.1
  **/
-class profile implements \JsonSerializable {
-	use ValidateUuid;
+class Profile implements \JsonSerializable {
 	use ValidateDate;
+	use ValidateUuid;
 	/**
  * id for this Profile; this is the primary key
  * @var $profileId
