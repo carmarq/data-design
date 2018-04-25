@@ -42,4 +42,23 @@ public function update(\PDO $pdo) : void {
 		$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail->getBytes(), "profileFavorites" =>profileFavorites->getBytes(), "profileHash" => $this->profileHash-getBytes(), profileLocation => $this->profileLocation->getBytes()];
 		$statement->execute($parameters);
 		}
+public static function getProfileByProfileId(\PDO $pdo, $profileId) : ?Profile {
+try {
+		profileId = self::ValidateUuid($profileId);
+} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+}
+$query = "SELECT profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername FROM profile WHERE profileId = :profileId";
+$statement = $pdo->prepare->(query);
+
+$parameters = ["profileId" => profileId->getBytes()];
+$statement->execute($parameters);
+
+try {
+		$profile = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row = $statement->fetch();
+		if($row !== false) {
+			$profile = new Profile($row["profileId"], $row["profileEmail"], $row["profileFavorites"], $row["profileLocation"]
+}
 ?>
