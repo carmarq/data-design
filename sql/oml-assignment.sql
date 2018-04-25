@@ -42,3 +42,4 @@ public function update(\PDO $pdo) : void {
 		$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail->getBytes(), "profileFavorites" =>profileFavorites->getBytes(), "profileHash" => $this->profileHash-getBytes(), profileLocation => $this->profileLocation->getBytes()];
 		$statement->execute($parameters);
 		}
+?>
