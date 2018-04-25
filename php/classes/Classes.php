@@ -20,20 +20,33 @@ private $profileId;
 	 **/
 private $profileEmail;
 	/**
-	 *id for the location of the profiles user
-	 * @var $profileLocation
-	 **/
-private $profileLocation;
-	/**
 	 * id for protecting users password
 	 * @var
 	 */
 private $profileHash;
 	/**
+	 *id for the location of the profiles user
+	 * @var $profileLocation
+	 **/
+private $profileLocation;
+	/**
 	 *id for the username associated with the profile
 	 *@var $profileUsername
 	 **/
 private $profileUsername;
+}
+public function __construct($newProfileId, string $newProfileEmail, $newProfileHash, string $newProfileLocation, string $newProfileUsername){
+	try {
+			$this->setProfileId($newProfileId);
+			$this->setProfileEmail($newProfileEmail);
+			$this->setProfileHash($newProfileHash);
+			$this->setProfileLocation($newProfileLocation);
+			$this->setProfileUsername($newProfileUsername);
+	}
+	catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		$exceptionType = get_class($exception);
+		throw(new $exceptionType($exception->getMessage(), 0, $exception));
+	}
 }
 	/**
 	 * accessor method for profileId
