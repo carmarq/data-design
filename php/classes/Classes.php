@@ -2,17 +2,17 @@
 
 namespace Edu\Cnm\cmarquez69\DataDesign;
 use Ramsey\Uuid\Uuid;
-/**
- * @author Carlos Marquez <carl.marq95@gmail.com>
- * @version 0.0.1
- **/
+	/**
+ 	* @author Carlos Marquez <carl.marq95@gmail.com>
+ 	* @version 0.0.1
+ 	**/
 class Profile implements \JsonSerializable {
 	use ValidateDate;
 	use ValidateUuid;
 	/**
- * id for this Profile; this is the primary key
- * @var $profileId
- **/
+ 	* id for this Profile; this is the primary key
+ 	* @var $profileId
+ 	**/
 private $profileId;
 	/**
 	 *id for the Email associated with the profile
@@ -22,7 +22,7 @@ private $profileEmail;
 	/**
 	 * id for protecting users password
 	 * @var
-	 */
+	 **/
 private $profileHash;
 	/**
 	 *id for the location of the profiles user
@@ -35,6 +35,14 @@ private $profileLocation;
 	 **/
 private $profileUsername;
 }
+
+/**
+ * @param $newProfileId
+ * @param string $newProfileEmail
+ * @param $newProfileHash
+ * @param string $newProfileLocation
+ * @param string $newProfileUsername
+ **/
 public function __construct($newProfileId, string $newProfileEmail, $newProfileHash, string $newProfileLocation, string $newProfileUsername){
 	try {
 			$this->setProfileId($newProfileId);
@@ -52,7 +60,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * accessor method for profileId
 	 *
 	 * @return Uuid value for profileId
-	 */
+	 **/
 	public function getProfileId(): Uuid {
 		return $this->profileId;
 	}
@@ -60,7 +68,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * mutator method for profileId
 	 *
 	 * @param $newprofileId
-	 */
+	 **/
 	public function setProfileId($newprofileId) : Uuid {
 		try {
 			$uuid = self::validateUuid($newprofileId);
@@ -75,7 +83,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * accessor method for profileEmail
 	 *
 	 * @return String value of profileEmail
-	 */
+	 **/
 	public function getProfileEmail(): String {
 		return $this->profileEmail;
 	}
@@ -83,7 +91,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * mutator method for profileEmail
 	 *
 	 * @param $profileEmail
-	 */
+	 **/
 	public function setProfileEmail(string $newProfileEmail) : void {
 		$newProfileEmail = trim($newProfileEmail);
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_VALIDATE_EMAIL);
@@ -99,7 +107,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
  * accessor method for  profilehash
  *
  * @return string value of profilehash
- */
+ **/
 	public function getProfileHash(): string {
 		return $this->profileHash;
 }
@@ -107,7 +115,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
  * Mutator method for profilehash
  *
  * @param $profileHash
- */
+ **/
 	public function setProfileHash(string $newProfileHash) : void {
 		$newProfileHash = trim($newProfileHash);
 		$newProfileHash = strtolower($newProfileHash);
@@ -126,7 +134,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * accessor method for profileLocation
 	 *
 	 * @return String value of
-	 */
+	 **/
 	public function getProfileLocation(): String {
 		return $this->profileLocation;
 	}
@@ -135,7 +143,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * mutator method of profileLocation
 	 *
 	 * @param $profileLocation
-	 */
+	 **/
 	public function setProfileLocation(string $newProfileLocation) : void {
 		$newProfileLocation = trim($newProfileLocation);
 		$newProfileLocation = filter_var($newProfileLocation, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
@@ -151,7 +159,7 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * accessor method of profileUsername
 	 *
 	 * @return string value of profileUsername
-	 */
+	 **/
 	public function getProfileUsername(): String {
 		return $this->profileUsername;
 	}
@@ -159,18 +167,17 @@ public function __construct($newProfileId, string $newProfileEmail, $newProfileH
 	 * mutator method of profileUsername
 	 *
 	 * @param $profileUsername
-	 */
+	 **/
 	public function setProfileUsername(string $newProfileUsername) : void {
+		$newProfileUsername = trim($newProfileUsername);
+		$newProfileUsername = filter_var($newProfileUsername,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 }
-}
-public function jsonSerialize() array {
-		$fields = get_object_vars($this);
-		$fields{}
 }
 /**
+ *
+ *
  * @param \PDO $pdo
- */
-
+ **/
 public function insert (\PDO $pdo) : void {
 
 	$query = "INSERT INTO profile(profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername) VALUES(:profileId, :profileEmail, :profileFavorites, :profileHash, :profileLocation, :profileUsername)";
@@ -180,8 +187,10 @@ public function insert (\PDO $pdo) : void {
 	$statement->execute($parameters);
 }
 /**
+ *
+ *
  * @param \PDO $pdo
- */
+ **/
  public function delete (\PDO $pdo) : void {
 
 	$query = "DELETE FROM profile WHERE profileId = :profileId";
@@ -190,14 +199,26 @@ public function insert (\PDO $pdo) : void {
 	$parameters = ["profileId" => $this->profileId->getBytes()];
 	$statement->execute($parameters);
 }
+/**
+ *
+ *
+ * @param \PDO $pdo
+ **/
 public function update(\PDO $pdo) : void {
 
  	$query = "UPDATE profile SET profileId = :profileId, profileEmail = :profileEmail, profileFavorites = :profileFavorites, profileHash = :profileHash, profileLocation = :profileLocation, WHERE profileUsername = :profileUsername";
 	$statement = $pdo->prepare($query);
 
-	$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail(), "profileFavorites" =>profileFavorites(), "profileHash" => $this->profileHash(), profileLocation => $this->profileLocation()];
-		$statement->execute($parameters);
-		}
+	$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail(), "profileFavorites" => $this->profileFavorites(), "profileHash" => $this->profileHash(), profileLocation => $this->profileLocation()];
+	$statement->execute($parameters);
+	}
+/**
+ *
+ *
+ * @param \PDO $pdo
+ * @param $profileId
+ *@return \SplFixedArray
+ **/
 public static function getProfileByProfileId(\PDO $pdo, $profileId) : \SplFixedArray {
 
  	try {
@@ -227,4 +248,15 @@ public static function getProfileByProfileId(\PDO $pdo, $profileId) : \SplFixedA
 		}
 	}
 	return ($profiles);
+}
+/**
+*
+ *
+**/
+public function jsonSerialize() array {
+	$fields = get_object_vars($this);
+
+	$fields["profileId"] = $this->profileId->toString();
+
+	return($fields);
 }
