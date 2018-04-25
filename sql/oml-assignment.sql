@@ -9,8 +9,8 @@ VALUES(UNHEX(REPLACE("aebdaeff-75ae-4039-b520-b506578efa3f", "dmscus@gmail.com",
 INSERT INTO profile(profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername)
 VALUES(UNHEX(REPLACE("9fa0132a-f8a1-4377-9341-63e8ec033795", "sucsmd@gmail.com", "Trainwreck", "453256", "Tucson, AZ", "sucsmd");
 
-DELETE FROM profileFavorites WHERE user = 'Ice Cream Cake'
-DELETE FROM profileFavorites WHERE user = 'Strawberry Blonde'
+DELETE FROM profile WHERE profileFavorites = 'Ice Cream Cake'
+DELETE FROM profile WHERE profileFavorites = 'Strawberry Blonde'
 
 UPDATE profile
 SET profileFavorites = 'Reba'
