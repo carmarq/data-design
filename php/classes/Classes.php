@@ -1,10 +1,6 @@
 <?php
 
 namespace Edu\Cnm\cmarquez69\DataDesign;
-
-require_once ("autoload.php");
-require_once (dirname(_DIR_, 2). "/vendor/autoload.php");
-
 use Ramsey\Uuid\Uuid;
 /**
  * @author Carlos Marquez <carl.marq95@gmail.com>
@@ -38,7 +34,6 @@ private $profileHash;
 	 *@var $profileUsername
 	 **/
 private $profileUsername;
-
 }
 	/**
 	 * accessor method for profileId
@@ -48,7 +43,6 @@ private $profileUsername;
 	public function getProfileId(): Uuid {
 		return $this->profileId;
 	}
-
 	/**
 	 * mutator method for profileId
 	 *
@@ -155,10 +149,50 @@ private $profileUsername;
 	 */
 	public function setProfileUsername(string $newProfileUsername) : void {
 }
-
 }
 public function jsonSerialize() array {
 		$fields = get_object_vars($this);
-
 		$fields{}
+}
+public function insert (\PDO $pdo) : void {
+	$query = "INSERT INTO profile(profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername) VALUES(:profileId, :profileEmail, :profileFavorites, :profileHash, :profileLocation, :profileUsername)";
+	$statement = $pdo->prepare($query);
+	$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail, "profileFavorites" => $this->profileFavorites, "profileHash" => $this->profileHash, "profileLocation" =>$this->profileLocation, "profileUsername" => $this->profileUsername];
+	$statement->execute($parameters);
+}
+ public function delete (\PDO $pdo) : void {
+	$query = "DELETE FROM profile WHERE profileId = :profileId";
+	$statement = $pdo->prepare($query);
+	$parameters = ["profileId" => $this->profileId->getBytes()];
+	$statement->execute($parameters);
+}
+public function update(\PDO $pdo) : void {
+	$query = "UPDATE profile SET profileId = :profileId, profileEmail = :profileEmail, profileFavorites = :profileFavorites, profileHash = :profileHash, profileLocation = :profileLocation, WHERE profileUsername = :profileUsername";
+	$statement = $pdo->prepare($query);
+	$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail(), "profileFavorites" =>profileFavorites(), "profileHash" => $this->profileHash(), profileLocation => $this->profileLocation()];
+		$statement->execute($parameters);
+		}
+public static function getProfileByProfileId(\PDO $pdo, $profileId) : \SplFixedArray {
+	try {
+		$profileId = self::validateUuid($profileId);
+	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	$query = "SELECT profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername FROM profile WHERE profileId = :profileId";
+	$statement = $pdo->prepare->(query);
+	$parameters = ["profileId" => $profileId->getBytes()];
+	$statement->execute($parameters);
+	$profile = new \SplFixedArray($statement->rowCount());
+	$statement->setFetchMode(\PDO::FETCH_ASSOC);
+	while(($row = $statement->fetch()) !== false) {
+		try {
+			$profile = new Profile($row["profileId"], $row["profileEmail"], $row["profileFavorites"], $row["profileHash"], $row["profileLocation"], $row["profileUsername"]);
+			$profiles[$profiles->key()] = $profile;
+			$profiles->next();
+		} catch(\Exception $exception) {
+
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+	}
+	return ($profiles);
 }
