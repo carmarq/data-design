@@ -24,7 +24,21 @@ Where profileUsername = 'sucsmd'
 
 public function insert (\PDO $pdo) : void {
 		$query = "INSERT INTO profile(profileId, profileEmail, profileFavorites, profileHash, profileLocation, profileUsername) VALUES(:profileId, :profileEmail, :profileFavorites, :profileHash, :profileLocation, :profileUsername)";
-$statement = $pdo->prepare($query);
-
-$formattedDate = $this->
+		$statement = $pdo->prepare($query);
+		$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail->getBytes(), "profileFavorites" => $this->profileFavorites->getBytes(), "profileHash" => $this->profileHash->getBytes(), "profileLocation" =>$this->profileLocation->getBytes(), "profileUsername" => $this->profileUsername->getBytes()];
+		$statement->execute($parameters);
 }
+ public function delete (\PDO $pdo) : void {
+ 		$query = "DELETE FROM profile WHERE profileId = :profileId";
+ 		$statement = $pdo->prepare($query);
+ 		$parameters = ["profileId" => $this->profileId->getBytes()];
+ 		$statement->execute($parameters);
+ }
+
+public function update(\PDO $pdo) : void {
+		$query = "UPDATE profile SET profileId = :profileId, profileEmail = :profileEmail, profleFavorites = :profileFavorites, profileHash = :profileHash, profileLocation = :profileLocation, WHERE profileUsername = :profileUsername";
+		$statement = $pdo->prepare($query);
+
+		$parameters = ["profileId" => $this->profileId->getBytes(), "profileEmail" => $this->profileEmail = :profileEmail->getBytes(), "profileFavorites" =>profileFavorites->getBytes(), "profileHash" => $this->profileHash-getBytes(), profileLocation => $this->profileLocation->getBytes()];
+		$statement->execute($parameters);
+		}
