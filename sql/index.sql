@@ -1,3 +1,4 @@
+/**
 ALTER DATABASE cmarquez69 CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 DROP TABLE IF EXISTS 'pick';
 DROP TABLE IF EXISTS product;
@@ -25,7 +26,7 @@ CREATE TABLE product(
 			PRIMARY KEY(productID)
 			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId)
 );
-CREATE TABLE 'pick'(
+CREATE TABLE pick(
 			pickProductId BINARY(16)
 			pickProfileId BINARY(16)
 			INDEX(pickProfileId),
@@ -34,3 +35,4 @@ CREATE TABLE 'pick'(
 			FOREIGN KEY(pickProductId) References product(productId),
 			FOREIGN KEY(pickProfileId) REFERENCES profile(profileId),
 );
+*/
