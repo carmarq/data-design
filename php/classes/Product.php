@@ -197,7 +197,7 @@ public function setProductHistory(string $newProductHistory): void {
 }
 /**
  * accessor method for product name of product
- * @return string containing about product
+ * @return string containing product names
 **/
 public function getProductName(): string {
 	return $this->productName;
@@ -206,7 +206,7 @@ public function getProductName(): string {
  * mutator method for productName
  *
 **/
-public function setProductName(string $newProductName) :void {
+public function setProductName(string $newProductName) : void {
 	$newProductHistory = trim($newProductHistory);
 	$newProductName = filter_var($newProductName,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	if(empty($newProductName) === true) {
@@ -216,3 +216,26 @@ public function setProductName(string $newProductName) :void {
 		throw(\newRangeException("name character limit has been exceeded"));
 	}
 	$this->productName = $newProductName;
+}
+/**
+ * accessor method for product price
+ * @return int containing the price of products
+**/
+public function getProductPrice(): string {
+	return $this->productPrice;
+}
+/**
+ * mutator method for product price
+ *
+**/
+public function setProductPrice(string $newProductPrice) : void {
+	$newProductPrice = trim($newProductPrice);
+	$newProductPrice = filter_var($newProductPrice, FILTER_SANITIZE_STRING., FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newProductPrice) === true) {
+		throw(new \InvalidArgumentException("product price character limit has been exceeded"));
+	}
+	if(strlen($newProductPrice) >32) {
+		throw(new\RangeException("product price has exceeded character limit"))
+	}
+	$this->productPrice = $newProductPrice;
+}
