@@ -17,46 +17,7 @@ use Ramsey\Uuid\Uuid;
  * @author Dylan McDonald <dmcdonald21@cnm.edu>
  * @package Edu\Cnm\Misquote
  **/
-trait ValidateUuid {
-	/**
-	 * validates a uuid irrespective of format
-	 *
-	 * @param string|Uuid $newUuid uuid to validate
-	 * @return Uuid object with validated uuid
-	 * @throws \InvalidArgumentException if $newUuid is not a valid uuid
-	 * @throws \RangeException if $newUuid is not a valid uuid v4
-	 **/
-	private static function validateUuid($newUuid) : Uuid {
-		// verify a string uuid
-		if(gettype($newUuid) === "string") {
-			// 16 characters is binary data from mySQL - convert to string and fall to next if block
-			if(strlen($newUuid) === 16) {
-				$newUuid = bin2hex($newUuid);
-				$newUuid = substr($newUuid, 0, 8) . "-" . substr($newUuid, 8, 4) . "-" . substr($newUuid,12, 4) . "-" . substr($newUuid, 16, 4) . "-" . substr($newUuid, 20, 12);
-			}
-			// 36 characters is a human readable uuid
-			if(strlen($newUuid) === 36) {
-				if(Uuid::isValid($newUuid) === false) {
-					throw(new \InvalidArgumentException("invalid uuid"));
-				}
-				$uuid = Uuid::fromString($newUuid);
-			} else {
-				throw(new \InvalidArgumentException("invalid uuid"));
-			}
-		} else if(gettype($newUuid) === "object" && get_class($newUuid) === "Ramsey\\Uuid\\Uuid") {
-			// if the misquote id is already a valid UUID, press on
-			$uuid = $newUuid;
-		} else {
-			// throw out any other trash
-			throw(new \InvalidArgumentException("invalid uuid"));
-		}
-		// verify the uuid is uuid v4
-		if($uuid->getVersion() !== 4) {
-			throw(new \RangeException("uuid is incorrect version"));
-		}
-		return($uuid);
-	}
-}
+
 		class Product implements \JsonSerializable {
 			use ValidateUuid;
 }
@@ -103,8 +64,19 @@ trait ValidateUuid {
 		private $productVariety;
 		/**
 		 * constructor for this product
-		 *
-		**/
+		 * @param string|Uuid $newProductId id for this profile or null if a new profile
+		 * @param string $newProductFacts string containing hash data
+		 * @param string $newProductHash
+		 * @param string $newProductHistory
+		 * @param string $newProductName
+		 * @param string $newProductPrice
+		 * @param string $newProductVariations
+		 * @param string $newProductVariety
+		 * @throws \InvalidArgumentException if data types are not valid
+		 * @throws \RangeException if data values are out of bounds
+		 * @throws \TypeError if data types violate type hints
+		 * @throws \Exception if some other exception occurs
+		 **/
 		public function __ construct($newProductId, $newProductFacts, $newProductHash, $newProductHistory, $newProductName, $newProductPrice, $newProductVariations, $newProductVariety)
 					try {
 							$this->setProductId($newProductId);
@@ -188,3 +160,17 @@ public function getProductHash(): string {
  * @throws \InvalidArgumentException if $newProductHash is in hexadecimal
  * @throws \RangeException if $newProductHash is more than 128 characters
  */
+public function setProfileHash(string $newProfileHash): void {
+	$newProfileHash = trim($newProfileHash);
+	$newProfileHash = strtolower($newProfileHash);
+	if(empty($newProfileHash) === true) {
+		throw(new \InvalidArgumentException("profile password hash empty or insecure"));
+	}
+	if(!ctype_xdigit($newProfileHash)) {
+		throw(new \InvalidArgumentException("profile password hash empty or insecure"));
+	}
+	if(strlen($newProfileHash) !== 128) {
+		throw(new \RangeException("profile hash must be 128 characters"));
+	}
+	$this->profileHash = $newProfileHash;
+}
