@@ -107,9 +107,7 @@ public function getProductId() : Uuid {
 /**
  * mutator method for product id
  *
- * @throws \Exception if
- *
- *
+ * @param Uuid|String $newProductId
 **/
 public function setProductId($newProductId) : void {
 	try {
@@ -133,7 +131,8 @@ public function getProductsFacts() : string {
 /**
  *mutator method for product facts
  *
- * @
+ * @param string $newProductFacts
+ * @throws \InvalidArgumentException
  **/
 public function setProductFacts(string $newProductFacts) : void {
 			$newProductFacts = trim($newProductFacts);
@@ -141,7 +140,7 @@ public function setProductFacts(string $newProductFacts) : void {
 	if(empty($newProductFacts) === true) {
 			throw(new \InvalidArgumentException("profile fact is empty or insecure"));
 	}
-	if(strlen ($newProfileFacts) > 128){
+	if(strlen($newProfileFacts) > 128){
 		throw(new\RangeException("fact character limit has been exceeded"));
 	}
 		$this->profileFacts = $newProductFacts;
@@ -176,5 +175,21 @@ public function setProfileHash(string $newProfileHash): void {
 	$this->profileHash = $newProfileHash;
 }
 /**
- *
+ * accessor for product history
+ * @return string containing history about product
 **/
+public function getProductHistory(): string {
+	return $this->productHistory;
+}
+/**
+ *mutator method for product history
+**/
+public function setProfileHistory(string $newProductHistory): void {
+	$newProductHistory = trim($newProductHistory);
+	$newProductHistory = filter_var($newProductHistory,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newProductHistory) === true) {
+		throw(new \InvalidArgumentException("profileHistory is empty or insecure"));
+	}
+	if(strlen($newProductHistory)> 128){
+
+}
