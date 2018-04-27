@@ -1,23 +1,15 @@
 <?php
 
 	namespace Edu\Cnm\cmarquez69\DataDesign;
+	require_once("autoload.php");
+	require_once (dirname(__DIR__, 2)) . "/classes/autoload.php");
+
 	use Ramsey\Uuid\Uuid;
 	/**
  	*@author Carlos Marquez <carl.marq95@gmail.com>
  	*@version 0.0.1
  	**/
-	/**
- 	*Trait to validate a uuid
- 	*
- 	*This trait will validate a uuid in any of the following three formats:
- 	*
- 	*1. human readable string (36 bytes)
- 	*2. binary string (16 bytes)
- 	*3. Ramsey\Uuid\Uuid object
- 	*
- 	*@author Dylan McDonald <dmcdonald21@cnm.edu>
- 	*@package Edu\Cnm\Misquote
- 	**/
+
 	class Profile implements \JsonSerializable {
 		use ValidateUuid;
 		/**
