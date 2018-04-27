@@ -219,7 +219,7 @@ public function setProductName(string $newProductName) : void {
 }
 /**
  * accessor method for product price
- * @return int containing the price of products
+ * @return string containing the price of products
 **/
 public function getProductPrice(): string {
 	return $this->productPrice;
@@ -235,7 +235,31 @@ public function setProductPrice(string $newProductPrice) : void {
 		throw(new \InvalidArgumentException("product price character limit has been exceeded"));
 	}
 	if(strlen($newProductPrice) >32) {
-		throw(new\RangeException("product price has exceeded character limit"))
+		throw(new\RangeException("product price has exceeded character limit"));
 	}
 	$this->productPrice = $newProductPrice;
 }
+/**
+ * accessor method for product variations
+ * @return string containing information about variations of products
+**/
+public function getProductVariations(): string {
+	return $this->productVariations;
+}
+/**
+ * mutator method for product variations
+ *
+**/
+public function setProductVariations(string $newProductVariations) : void {
+	$newProductVariations = trim($newProductVariations) : void {
+		$newProductVariations = trim($newProductVariations);
+		$newProductVariations = filter_var($newProductVariations, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(empty($newProductVariations) === true) {
+			throw(new\InvalidArgumentException("product variation description has exceeded its character limit"));
+		}
+		if(strlen($newProductVariations) > 128) {
+			throw(new\RangeException("product variation description has exceeded its character limit"));
+		}
+		$this->productVariations = $newProductVariations;
+	}
+	}
