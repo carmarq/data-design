@@ -274,3 +274,60 @@ public function setProductVariety($sting $newProductVariety) : void {
 	}
 	$this->productVariety = $newProductVariety;
 }
+
+/**
+ * inserts product into mySQL
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when mySQL related errors occur
+ * @throws \TypeError if $pdo is not a PDO connection object
+**/
+public function insert(\PDO $pdo): void {
+	//create query template
+	$query ="INSERT INTO product(productId, productFacts, productHash, productHistory, productName, productPrice, productVariations, productVariety) VALUES(:productId, :productFacts, :productHash, :productHistory, :productName, :productPrice, :productVariations, :productVariety)";
+	$statement = $pdo->prepare($query);
+
+	//bind member variables to the place holders
+	$parameters = ["productId" => $this->productId->getBytes(), "productFacts" => $this->productFacts>getBytes(),"productHash" => $this->productHash>getBytes(), "productHistory" => $this->productHistory>getBytes(), "productName" => $this->productName>getBytes(), "productPrice" => $this->productPrice>getBytes(), "productVariations" => $this->productVariations>getBytes(), "productVariety" => $this->productVariety>getBytes];
+	$statement->($parameters);
+}
+
+/**
+ *deletes product into mySQL
+ *@param \PDO $pdo PDO connection object
+ *@throws \PDOException when mySQL related errors occur
+ *@throws \TypeError if $pdo is not a PDO connection object
+**/
+public function delete(\PDO $pdo): void {
+
+	$query = "DELETE FROM product WHERE productId = : productId";
+	$statement = $pdo->prepare($query);
+
+	$parameters = ["productId" => $this->productId->getBytes()];
+	$statement->execute($parameters);
+}
+
+/**
+ *updates product from mySQL
+ *@param \PDO $pdo PDO connection object
+ *@throws \PDOException when mySQL related errors occur
+ *@throws \TypeError if $pdo is not a PDO connection object
+**/
+public function update(\PDO $pdo): void {
+
+	$query = "UPDATE product SET productFacts = :productFacts, productName =:productName WHERE productId = :productId";
+	$statement = $pdo->prepare($query);
+
+	$parameters = ["productId" => $this->productId->getBytes(), "productFacts" => $this->productFacts>getBytes(),"productHash" => $this->productHash>getBytes(), "productHistory" => $this->productHistory>getBytes(), "productName" => $this->productName>getBytes(), "productPrice" => $this->productPrice>getBytes(), "productVariations" => $this->productVariations>getBytes(), "productVariety" => $this->productVariety>getBytes];
+	$statement->execute($parameters);
+}
+
+/**
+ * formats the state variables with JSON
+ * @return array to serialize state variables
+ */
+public function jsonSerialize(): array {
+	$fields = get_object_vars($this);
+
+	$fields["productId"] = $this->productId->toString();
+	return($fields);
+}
