@@ -65,13 +65,13 @@ use Ramsey\Uuid\Uuid;
 		/**
 		 * constructor for this product
 		 * @param string|Uuid $newProductId id for this profile or null if a new profile
-		 * @param string $newProductFacts string containing hash data
-		 * @param string $newProductHash
-		 * @param string $newProductHistory
-		 * @param string $newProductName
-		 * @param string $newProductPrice
-		 * @param string $newProductVariations
-		 * @param string $newProductVariety
+		 * @param string $newProductFacts string containing factual data about product
+		 * @param string $newProductHash string containing hash data
+		 * @param string $newProductHistory string containing history about product
+		 * @param string $newProductName string with name of product
+		 * @param string $newProductPrice string with price of product
+		 * @param string $newProductVariations string with variations of products
+		 * @param string $newProductVariety string with varieties of products
 		 * @throws \InvalidArgumentException if data types are not valid
 		 * @throws \RangeException if data values are out of bounds
 		 * @throws \TypeError if data types violate type hints
@@ -99,7 +99,7 @@ use Ramsey\Uuid\Uuid;
 /**
  * accessor method for product id
  * @return Uuid value for product id
- */
+**/
 public function getProductId() : Uuid {
 		return($this->productId);
 }
@@ -107,6 +107,7 @@ public function getProductId() : Uuid {
 /**
  * mutator method for product id
  *
+ * @throws \Exception if
  *
  *
 **/
@@ -148,7 +149,7 @@ public function setProductFacts(string $newProductFacts) : void {
 /**
  * accessor method for product hash
  * @return string value for product hash
- */
+**/
 public function getProductHash(): string {
 		return $this->profileHash;
 
@@ -159,7 +160,7 @@ public function getProductHash(): string {
  * @throws \InvalidArgumentException if $newProductHash is not a valid object or a string
  * @throws \InvalidArgumentException if $newProductHash is in hexadecimal
  * @throws \RangeException if $newProductHash is more than 128 characters
- */
+**/
 public function setProfileHash(string $newProfileHash): void {
 	$newProfileHash = trim($newProfileHash);
 	$newProfileHash = strtolower($newProfileHash);
@@ -174,3 +175,6 @@ public function setProfileHash(string $newProfileHash): void {
 	}
 	$this->profileHash = $newProfileHash;
 }
+/**
+ *
+**/
