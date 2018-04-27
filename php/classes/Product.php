@@ -1,27 +1,18 @@
 <?php
 namespace Edu\Cnm\cmarquez69\DataDesign;
+
+require_once("autoload.php");
+require_once (dirname(__DIR__, 2)) . "/classes/autoload.php");
+
 use Ramsey\Uuid\Uuid;
 /**
  * @author Carlos Marquez <carl.marq95@gmail.com>
  * @version 0.0.1
  **/
-/**
- * Trait to validate a uuid
- *
- * This trait will validate a uuid in any of the following three formats:
- *
- * 1. human readable string (36 bytes)
- * 2. binary string (16 bytes)
- * 3. Ramsey\Uuid\Uuid object
- *
- * @author Dylan McDonald <dmcdonald21@cnm.edu>
- * @package Edu\Cnm\Misquote
- **/
 
 		class Product implements \JsonSerializable {
 			use ValidateUuid;
-}
-
+		}
 		/**
 		 *id for this profile; this is the primary key
 		 *@var $productId
@@ -251,15 +242,35 @@ public function getProductVariations(): string {
  *
 **/
 public function setProductVariations(string $newProductVariations) : void {
-	$newProductVariations = trim($newProductVariations) : void {
-		$newProductVariations = trim($newProductVariations);
-		$newProductVariations = filter_var($newProductVariations, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(empty($newProductVariations) === true) {
-			throw(new\InvalidArgumentException("product variation description has exceeded its character limit"));
+	$newProductVariations = trim($newProductVariations);
+	$newProductVariations = filter_var($newProductVariations, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newProductVariations) === true) {
+		throw(new\InvalidArgumentException("product variation description has exceeded its character limit"));
 		}
-		if(strlen($newProductVariations) > 128) {
-			throw(new\RangeException("product variation description has exceeded its character limit"));
+	if(strlen($newProductVariations) > 128) {
+		throw(new\RangeException("product variation description has exceeded its character limit"));
 		}
-		$this->productVariations = $newProductVariations;
+	$this->productVariations = $newProductVariations;
 	}
+/**
+ * accessor method for product varieties
+ * @return string containing information about product varieties
+**/
+public function getProductVariety (): string {
+	return $this->productVariety;
+}
+/**
+ * mutator method for product varieties
+ *
+**/
+public function setProductVariety($sting $newProductVariety) : void {
+	$newProductVariety = trim($newProductVariety;
+	$newProductVariety = filter_var($newProductVariety, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newProductVariety) === true) {
+		throw(new\InvalidArgumentException("product variety description has exceeded its character limit"));
 	}
+	if(strlen($newProductVariety) > 128) {
+		throw(new\RangeException("product variety description has exceeded its character limit"));
+	}
+	$this->productVariety = $newProductVariety;
+}
