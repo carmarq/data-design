@@ -184,12 +184,35 @@ public function getProductHistory(): string {
 /**
  *mutator method for product history
 **/
-public function setProfileHistory(string $newProductHistory): void {
+public function setProductHistory(string $newProductHistory): void {
 	$newProductHistory = trim($newProductHistory);
-	$newProductHistory = filter_var($newProductHistory,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	$newProductHistory = filter_var($newProductHistory, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	if(empty($newProductHistory) === true) {
-		throw(new \InvalidArgumentException("profileHistory is empty or insecure"));
+		throw(new \InvalidArgumentException("product history is empty or insecure"));
 	}
-	if(strlen($newProductHistory)> 128){
-
+	if(strlen($newProductHistory) > 128) {
+		throw(new\RangeException("history character limit has been exceeded"));
+	}
+	$this->productHistory = $newProductHistory;
 }
+/**
+ * accessor method for product name of product
+ * @return string containing about product
+**/
+public function getProductName(): string {
+	return $this->productName;
+}
+/**
+ * mutator method for productName
+ *
+**/
+public function setProductName(string $newProductName) :void {
+	$newProductHistory = trim($newProductHistory);
+	$newProductName = filter_var($newProductName,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newProductName) === true) {
+		throw(new \InvalidArgumentException("product name is empty or insecure"));
+	}
+	if(strlen($newProductName > 128) {
+		throw(\newRangeException("name character limit has been exceeded"));
+	}
+	$this->productName = $newProductName;

@@ -173,6 +173,15 @@
 		public function setProfileUsername(string $newProfileUsername) : void {
 			$newProfileUsername = trim($newProfileUsername);
 			$newProfileUsername = filter_var($newProfileUsername,FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+			if(empty($newProfileUsername) === true) {
+				throw(new \InvalidArgumentException("username is empty or insecure"));
+			}
+			//verify that username is within is within range of 32
+			if(strlen($newProfileUsername) > 32) {
+				throw(new\RangeException("username is too large"));
+			}
+			//store the username
+			$this->profileUsername = $newProfileUsername;
 }
 }
 		/**
